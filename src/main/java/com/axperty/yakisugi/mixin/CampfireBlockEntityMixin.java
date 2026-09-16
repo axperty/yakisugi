@@ -4,10 +4,7 @@ import com.axperty.yakisugi.registry.BlockRegistry;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -18,7 +15,10 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import com.axperty.yakisugi.api.ICharringCampfire;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -44,38 +44,32 @@ public abstract class CampfireBlockEntityMixin extends BlockEntity implements IC
 
     // save the charring map to the campfire block entity
     @Inject(method = "saveAdditional", at = @At("TAIL"))
-    private void yakisugi$saveAdditional(CompoundTag tag, HolderLookup.Provider registries, CallbackInfo ci) {
+    private void yakisugi$saveAdditional(ValueOutput output, CallbackInfo ci) {
         if (!yakisugi$charringMap.isEmpty()) {
-            ListTag list = new ListTag();
+            ValueOutput.ValueOutputList list = output.childrenList("YakisugiCharringMap");
             for (Object2IntMap.Entry<BlockPos> entry : yakisugi$charringMap.object2IntEntrySet()) {
-                CompoundTag entryTag = new CompoundTag();
-                entryTag.putInt("X", entry.getKey().getX());
-                entryTag.putInt("Y", entry.getKey().getY());
-                entryTag.putInt("Z", entry.getKey().getZ());
-                entryTag.putInt("Time", entry.getIntValue());
-                list.add(entryTag);
+                ValueOutput entryOutput = list.addChild();
+                entryOutput.putInt("X", entry.getKey().getX());
+                entryOutput.putInt("Y", entry.getKey().getY());
+                entryOutput.putInt("Z", entry.getKey().getZ());
+                entryOutput.putInt("Time", entry.getIntValue());
             }
-            tag.put("YakisugiCharringMap", list);
         }
     }
 
     // Load the charring map from the campfire block entity
     @Inject(method = "loadAdditional", at = @At("TAIL"))
-    private void yakisugi$loadAdditional(CompoundTag tag, HolderLookup.Provider registries, CallbackInfo ci) {
+    private void yakisugi$loadAdditional(ValueInput input, CallbackInfo ci) {
         yakisugi$charringMap.clear();
-        if (tag.contains("YakisugiCharringMap", 9)) {
-            ListTag list = tag.getList("YakisugiCharringMap", 10);
-            for (int i = 0; i < list.size(); i++) {
-                CompoundTag entryTag = list.getCompound(i);
-                BlockPos pos = new BlockPos(entryTag.getInt("X"), entryTag.getInt("Y"), entryTag.getInt("Z"));
-                yakisugi$charringMap.put(pos, entryTag.getInt("Time"));
-            }
+        for (ValueInput entryInput : input.childrenListOrEmpty("YakisugiCharringMap")) {
+            BlockPos pos = new BlockPos(entryInput.getIntOr("X", 0), entryInput.getIntOr("Y", 0), entryInput.getIntOr("Z", 0));
+            yakisugi$charringMap.put(pos, entryInput.getIntOr("Time", 0));
         }
     }
 
     // Main campfire functionality
     @Inject(method = "cookTick", at = @At("TAIL"))
-    private static void yakisugi$cookTick(Level level, BlockPos pos, BlockState state, CampfireBlockEntity blockEntity, CallbackInfo ci) {
+    private static void yakisugi$cookTick(ServerLevel level, BlockPos pos, BlockState state, CampfireBlockEntity blockEntity, RecipeManager.CachedCheck<?, ?> cachedCheck, CallbackInfo ci) {
         if (!state.getValue(CampfireBlock.LIT)) return;
         if (level.getGameTime() % 20 != 0) return;
 
@@ -91,7 +85,7 @@ public abstract class CampfireBlockEntityMixin extends BlockEntity implements IC
                 }
             }
         }
-        
+
         map.keySet().removeIf(p -> !level.getBlockState(p).is(BlockTags.PLANKS));
     }
 
@@ -99,14 +93,14 @@ public abstract class CampfireBlockEntityMixin extends BlockEntity implements IC
     private static void yakisugi$processCharring(Level level, BlockPos targetPos, Object2IntMap<BlockPos> map) {
         final int CHARCOAL_THRESHOLD = 1000;
         final int CHARRED_THRESHOLD = 1200;
-        
+
         BlockState targetState = level.getBlockState(targetPos);
         int time = map.getInt(targetPos);
         time += 20;
-        
+
         boolean isSlightlyCharred = targetState.is(BlockRegistry.SLIGHTLY_CHARRED_PLANKS.get());
         boolean isCharred = targetState.is(BlockRegistry.CHARRED_PLANKS.get());
-        
+
         if (isCharred) {
             if (time >= CHARCOAL_THRESHOLD) {
                 level.destroyBlock(targetPos, false);
@@ -127,12 +121,12 @@ public abstract class CampfireBlockEntityMixin extends BlockEntity implements IC
             level.levelEvent(1502, targetPos, 0);
         } else {
             map.put(targetPos, time);
-            if (level.random.nextInt(10) == 0 && level instanceof ServerLevel serverLevel) {
-                double px = targetPos.getX() + 0.5D + (level.random.nextDouble() - 0.5D) * 0.5D;
-                double py = targetPos.getY() + 0.5D + (level.random.nextDouble() - 0.5D) * 0.5D;
-                double pz = targetPos.getZ() + 0.5D + (level.random.nextDouble() - 0.5D) * 0.5D;
+            if (level.getRandom().nextInt(10) == 0 && level instanceof ServerLevel serverLevel) {
+                double px = targetPos.getX() + 0.5D + (level.getRandom().nextDouble() - 0.5D) * 0.5D;
+                double py = targetPos.getY() + 0.5D + (level.getRandom().nextDouble() - 0.5D) * 0.5D;
+                double pz = targetPos.getZ() + 0.5D + (level.getRandom().nextDouble() - 0.5D) * 0.5D;
                 serverLevel.sendParticles(ParticleTypes.SMOKE, px, py, pz, 1, 0.0D, 0.0D, 0.0D, 0.0D);
-                if (level.random.nextBoolean()) {
+                if (level.getRandom().nextBoolean()) {
                     serverLevel.sendParticles(ParticleTypes.FLAME, px, py, pz, 1, 0.0D, 0.0D, 0.0D, 0.0D);
                 }
             }

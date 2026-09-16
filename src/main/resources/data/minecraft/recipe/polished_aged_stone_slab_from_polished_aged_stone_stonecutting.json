@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "yakisugi:polished_aged_stone",
+  "result": {
+    "count": 1,
+    "id": "yakisugi:polished_aged_stone_slab"
+  }
+}

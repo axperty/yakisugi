@@ -1,8 +1,6 @@
 package com.axperty.yakisugi.client.model;
 
 import com.axperty.yakisugi.Yakisugi;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -12,13 +10,14 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.resources.Identifier;
 
 // Adapted from a Blockbench export
-public class StrawArmorModel<T extends LivingEntity> extends EntityModel<T> {
+public class StrawArmorModel extends EntityModel<EntityRenderState> {
     public static final ModelLayerLocation LAYER_LOCATION =
-            new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Yakisugi.MOD_ID, "straw_armor"), "main");
+            new ModelLayerLocation(Identifier.fromNamespaceAndPath(Yakisugi.MOD_ID, "straw_armor"), "main");
 
     public final ModelPart head;
     public final ModelPart body;
@@ -28,6 +27,7 @@ public class StrawArmorModel<T extends LivingEntity> extends EntityModel<T> {
     public final ModelPart rightArm;
 
     public StrawArmorModel(ModelPart root) {
+        super(root, RenderTypes::armorCutoutNoCull);
         this.head = root.getChild("head");
         this.body = root.getChild("body");
         this.leftShoe = root.getChild("left_shoe");
@@ -88,17 +88,7 @@ public class StrawArmorModel<T extends LivingEntity> extends EntityModel<T> {
     }
 
     @Override
-    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        
-    }
+    public void setupAnim(EntityRenderState state) {
 
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        head.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
-        body.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
-        leftShoe.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
-        rightShoe.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
-        leftArm.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
-        rightArm.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 }

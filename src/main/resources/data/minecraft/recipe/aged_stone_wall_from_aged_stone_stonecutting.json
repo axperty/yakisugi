@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "yakisugi:aged_stone",
+  "result": {
+    "count": 1,
+    "id": "yakisugi:aged_stone_wall"
+  }
+}

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "S": {
-      "item": "minecraft:sand"
-    },
-    "I": {
-      "item": "minecraft:iron_nugget"
-    },
-    "C": {
-      "item": "minecraft:clay_ball"
-    }
+    "S": "minecraft:sand",
+    "I": "minecraft:iron_nugget",
+    "C": "minecraft:clay_ball"
   },
   "pattern": [
     "CCS",

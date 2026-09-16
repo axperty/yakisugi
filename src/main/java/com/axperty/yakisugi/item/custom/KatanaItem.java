@@ -1,28 +1,26 @@
 package com.axperty.yakisugi.item.custom;
 
-import com.axperty.yakisugi.registry.ItemRegistry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.phys.Vec3;
 
-public class KatanaItem extends SwordItem {
+public class KatanaItem extends Item {
     private static final float DASH_DAMAGE = 8.0F;
     private static final double DASH_STRENGTH = 1.4;
     private static final int TRAIL_POINTS = 6;
 
-    public KatanaItem(Tier tier, Properties properties) {
-        super(tier, properties);
+    public KatanaItem(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        boolean result = super.hurtEnemy(stack, target, attacker);
+    public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        super.hurtEnemy(stack, target, attacker);
         if (attacker.level() instanceof ServerLevel serverLevel && attacker instanceof ServerPlayer player
                 && target.isAlive() && isCriticalHit(player)) {
             Vec3 dir = target.position().subtract(player.position());
@@ -35,12 +33,6 @@ public class KatanaItem extends SwordItem {
 
             target.hurt(player.damageSources().playerAttack(player), DASH_DAMAGE);
         }
-        return result;
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return repair.is(ItemRegistry.TAMAHAGANE_CHUNK.get()) || super.isValidRepairItem(toRepair, repair);
     }
 
     private boolean isCriticalHit(ServerPlayer player) {

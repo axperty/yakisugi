@@ -9,9 +9,7 @@
   "category": "building",
   "group": "fd_tatami",
   "key": {
-    "c": {
-      "item": "farmersdelight:canvas"
-    },
+    "c": "farmersdelight:canvas",
     "s": {
       "tag": "c:straw"
     }

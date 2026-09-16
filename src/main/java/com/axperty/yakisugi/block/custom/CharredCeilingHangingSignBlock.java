@@ -14,7 +14,5 @@ public class CharredCeilingHangingSignBlock extends CeilingHangingSignBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new ModHangingSignBlockEntity(pos, state);
-    }
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {return new ModHangingSignBlockEntity(pos, state);}
 }

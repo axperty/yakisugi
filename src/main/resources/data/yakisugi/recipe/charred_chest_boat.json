@@ -3,12 +3,8 @@
   "category": "transportation",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "minecraft:chest"
-    },
-    {
-      "item": "yakisugi:charred_boat"
-    }
+    "minecraft:chest",
+    "yakisugi:charred_boat"
   ],
   "result": {
     "count": 1,

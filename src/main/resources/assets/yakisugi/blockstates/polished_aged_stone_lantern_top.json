@@ -8,6 +8,30 @@
     },
     "lantern_type=2": {
       "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_soul_lantern"
+    },
+    "lantern_type=3": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_copper_bulb"
+    },
+    "lantern_type=4": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_exposed_copper_bulb"
+    },
+    "lantern_type=5": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_weathered_copper_bulb"
+    },
+    "lantern_type=6": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_oxidized_copper_bulb"
+    },
+    "lantern_type=7": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_copper_bulb"
+    },
+    "lantern_type=8": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_exposed_copper_bulb"
+    },
+    "lantern_type=9": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_weathered_copper_bulb"
+    },
+    "lantern_type=10": {
+      "model": "yakisugi:block/polished_aged_stone_lantern_top_placed_oxidized_copper_bulb"
     }
   }
 }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "yakisugi:polished_aged_stone"
-    }
+    "yakisugi:polished_aged_stone"
   ],
   "result": {
     "count": 1,

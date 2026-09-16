@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.5,
-  "ingredient": {
-    "item": "yakisugi:iron_sand"
-  },
+  "ingredient": "yakisugi:iron_sand",
   "result": {
     "count": 1,
     "id": "yakisugi:tamahagane_chunk"

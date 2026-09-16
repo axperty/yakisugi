@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:bamboo"
-    },
-    "L": {
-      "item": "yakisugi:aged_stone_slab"
-    }
+    "B": "minecraft:bamboo",
+    "L": "yakisugi:aged_stone_slab"
   },
   "pattern": [
     "BB ",

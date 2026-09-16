@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "yakisugi:block/chiseled_oak_log_state_second"
+  }
+}

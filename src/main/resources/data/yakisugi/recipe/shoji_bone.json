@@ -2,19 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "tag": "minecraft:planks"
-    }
+    "S": "minecraft:stick",
+    "W": "#minecraft:wooden_tool_materials"
   },
   "pattern": [
     "WSW",
     "WSW"
   ],
   "result": {
-    "count": 3,
+    "count": 6,
     "id": "yakisugi:shoji_bone"
   }
 }

@@ -8,9 +8,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.item.DyeColor;
-import javax.annotation.Nullable;
 
 public class FloorBedBlock extends BedBlock {
     // Bed shape needs fix
@@ -33,12 +31,5 @@ public class FloorBedBlock extends BedBlock {
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
-    }
-
-    // No block entity needed: color/appearance come entirely from our block model, not BedBlockEntity + BedRenderer.
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return null;
     }
 }

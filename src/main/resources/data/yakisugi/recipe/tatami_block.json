@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "R": {
-      "item": "minecraft:string"
-    },
-    "S": {
-      "tag": "c:straw"
-    }
+    "R": "minecraft:string",
+    "S": "#c:straw"
   },
   "pattern": [
     "RS",

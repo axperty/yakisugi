@@ -4,59 +4,54 @@ import com.axperty.yakisugi.Yakisugi;
 import com.axperty.yakisugi.client.model.StrawArmorModel;
 import com.axperty.yakisugi.registry.ItemRegistry;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
-public class StrawArmorLayer<T extends LivingEntity, M extends HumanoidModel<T>> extends RenderLayer<T, M> {
-    private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Yakisugi.MOD_ID, "textures/entity/straw_armor.png");
+public class StrawArmorLayer<S extends HumanoidRenderState, M extends HumanoidModel<S>> extends RenderLayer<S, M> {
+    private static final Identifier TEXTURE =
+            Identifier.fromNamespaceAndPath(Yakisugi.MOD_ID, "textures/entity/straw_armor.png");
 
-    private final StrawArmorModel<T> model;
+    private final StrawArmorModel model;
 
-    public StrawArmorLayer(RenderLayerParent<T, M> renderer, EntityModelSet entityModels) {
+    public StrawArmorLayer(RenderLayerParent<S, M> renderer, EntityModelSet entityModels) {
         super(renderer);
-        this.model = new StrawArmorModel<>(entityModels.bakeLayer(StrawArmorModel.LAYER_LOCATION));
+        this.model = new StrawArmorModel(entityModels.bakeLayer(StrawArmorModel.LAYER_LOCATION));
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T entity,
-                        float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-        ItemStack headItem = entity.getItemBySlot(EquipmentSlot.HEAD);
-        ItemStack chestItem = entity.getItemBySlot(EquipmentSlot.CHEST);
-        ItemStack feetItem = entity.getItemBySlot(EquipmentSlot.FEET);
+    public void submit(PoseStack poseStack, SubmitNodeCollector collector, int packedLight, S state, float yRot, float xRot) {
+        ItemStack headItem = state.headEquipment;
+        ItemStack chestItem = state.chestEquipment;
+        ItemStack feetItem = state.feetEquipment;
 
-        boolean showHead = headItem.is(ItemRegistry.STRAW_HAT.get());
-        boolean showBody = chestItem.is(ItemRegistry.STRAW_MINO.get());
-        boolean showFeet = feetItem.is(ItemRegistry.STRAW_BOOTS.get());
+        boolean showHead = headItem.is(ItemRegistry.WHEAT_HAT.get());
+        boolean showBody = chestItem.is(ItemRegistry.MINO.get());
+        boolean showFeet = feetItem.is(ItemRegistry.FUKA_GUTSU.get());
 
         if (!showHead && !showBody && !showFeet) {
             return;
         }
 
         M parent = this.getParentModel();
-        model.head.copyFrom(parent.head);
-        model.body.copyFrom(parent.body);
-        model.leftArm.copyFrom(parent.leftArm);
-        model.rightArm.copyFrom(parent.rightArm);
+        model.head.loadPose(parent.head.storePose());
+        model.body.loadPose(parent.body.storePose());
+        model.leftArm.loadPose(parent.leftArm.storePose());
+        model.rightArm.loadPose(parent.rightArm.storePose());
         // Fix shoes bug
-        model.leftShoe.copyFrom(parent.leftLeg);
-        model.rightShoe.copyFrom(parent.rightLeg);
+        model.leftShoe.loadPose(parent.leftLeg.storePose());
+        model.rightShoe.loadPose(parent.rightLeg.storePose());
 
         model.setHeadVisible(showHead);
         model.setBodyVisible(showBody);
         model.setFeetVisible(showFeet);
 
-        VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.armorCutoutNoCull(TEXTURE));
-        model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, -1);
+        collector.submitModel(model, state, poseStack, TEXTURE, packedLight, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
     }
 }

@@ -1,10 +1,8 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "category": "building",
   "ingredients": [
-    {
-      "item": "yakisugi:tatami_block"
-    }
+    "yakisugi:tatami_block"
   ],
   "result": {
     "count": 2,

@@ -23,11 +23,11 @@ public class CreativeTabRegistry {
                         output.accept(ItemRegistry.SHURIKEN.get());
                         output.accept(ItemRegistry.IRON_SAND.get());
                         output.accept(ItemRegistry.TAMAHAGANE_CHUNK.get());
-//                        output.accept(BlockRegistry.FLOOR_BED.get());
+                        // output.accept(BlockRegistry.FLOOR_BED.get());
+                        output.accept(ItemRegistry.WHEAT_HAT.get());
+                        output.accept(ItemRegistry.MINO.get());
+                        output.accept(ItemRegistry.FUKA_GUTSU.get());
                         output.accept(ItemRegistry.WHEAT_STRAW.get());
-                        output.accept(ItemRegistry.STRAW_HAT.get());
-                        output.accept(ItemRegistry.STRAW_MINO.get());
-                        output.accept(ItemRegistry.STRAW_BOOTS.get());
 
                         output.accept(BlockRegistry.SHOJI_SCREEN.get());
                         output.accept(BlockRegistry.SHOJI_DOOR.get());

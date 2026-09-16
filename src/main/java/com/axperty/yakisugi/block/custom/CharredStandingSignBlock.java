@@ -14,7 +14,5 @@ public class CharredStandingSignBlock extends StandingSignBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new ModSignBlockEntity(pos, state);
-    }
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {return new ModSignBlockEntity(pos, state);}
 }

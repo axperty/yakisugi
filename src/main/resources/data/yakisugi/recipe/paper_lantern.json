@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "P": {
-      "item": "minecraft:paper"
-    },
-    "C": {
-      "item": "minecraft:candle"
-    }
+    "P": "minecraft:paper",
+    "C": "minecraft:candle"
   },
   "pattern": [
     "PPP",

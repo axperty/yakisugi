@@ -1,12 +1,23 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "minecraft:block/block",
   "textures": {
-    "down": "yakisugi:block/slightly_charred_cabinet_top",
-    "east": "yakisugi:block/slightly_charred_cabinet_side",
-    "north": "yakisugi:block/slightly_charred_cabinet_front_open",
-    "south": "yakisugi:block/slightly_charred_cabinet_side",
-    "up": "yakisugi:block/slightly_charred_cabinet_top",
-    "west": "yakisugi:block/slightly_charred_cabinet_side",
-    "particle": "yakisugi:block/slightly_charred_cabinet_front_open"
-  }
+    "particle": "yakisugi:block/slightly_charred_cabinet_front_open",
+    "top": "yakisugi:block/slightly_charred_cabinet_top",
+    "side": "yakisugi:block/slightly_charred_cabinet_side",
+    "front": "yakisugi:block/slightly_charred_cabinet_front_open"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down": {"texture": "#top", "cullface": "down"},
+        "up": {"texture": "#top", "cullface": "up"},
+        "north": {"texture": "#front", "cullface": "north"},
+        "south": {"texture": "#side", "cullface": "south"},
+        "west": {"texture": "#side", "cullface": "west"},
+        "east": {"texture": "#side", "cullface": "east"}
+      }
+    }
+  ]
 }

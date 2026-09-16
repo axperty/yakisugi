@@ -3,16 +3,17 @@ package com.axperty.yakisugi.block.entity;
 import com.axperty.yakisugi.block.custom.CabinetBlock;
 import com.axperty.yakisugi.registry.BlockEntityTypesRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.entity.ContainerUser;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -22,113 +23,117 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+
+import java.util.List;
 
 // Taken from Storage Delight which also takes it from the Barrel block
 public class CabinetBlockEntity extends RandomizableContainerBlockEntity
 {
-    private NonNullList<ItemStack> contents = NonNullList.withSize(27, ItemStack.EMPTY);
-    private ContainerOpenersCounter openersCounter = new ContainerOpenersCounter()
-    {
-        protected void onOpen(Level level, BlockPos pos, BlockState state) {
-            CabinetBlockEntity.this.playSound(state, SoundEvents.BARREL_OPEN);
-            CabinetBlockEntity.this.updateBlockState(state, true);
-        }
+    private static final Component DEFAULT_NAME = Component.translatable("container.yakisugi.cabinet");
+    private NonNullList<ItemStack> items;
+    private final ContainerOpenersCounter openersCounter;
 
-        protected void onClose(Level level, BlockPos pos, BlockState state) {
-            CabinetBlockEntity.this.playSound(state, SoundEvents.BARREL_CLOSE);
-            CabinetBlockEntity.this.updateBlockState(state, false);
-        }
-
-        protected void openerCountChanged(Level level, BlockPos pos, BlockState sta, int arg1, int arg2) {
-        }
-
-        protected boolean isOwnContainer(Player p_155060_) {
-            if (p_155060_.containerMenu instanceof ChestMenu) {
-                Container container = ((ChestMenu) p_155060_.containerMenu).getContainer();
-                return container == CabinetBlockEntity.this;
-            } else {
-                return false;
+    public CabinetBlockEntity(BlockPos pos, BlockState blockState) {
+        super(BlockEntityTypesRegistry.CABINET.get(), pos, blockState);
+        this.items = NonNullList.withSize(27, ItemStack.EMPTY);
+        this.openersCounter = new ContainerOpenersCounter() {
+            protected void onOpen(Level p_155062_, BlockPos p_155063_, BlockState p_155064_) {
+                CabinetBlockEntity.this.playSound(p_155064_, SoundEvents.BARREL_OPEN);
+                CabinetBlockEntity.this.updateBlockState(p_155064_, true);
             }
-        }
-    };
 
-    public CabinetBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityTypesRegistry.CABINET.get(), pos, state);
+            protected void onClose(Level p_155072_, BlockPos p_155073_, BlockState p_155074_) {
+                CabinetBlockEntity.this.playSound(p_155074_, SoundEvents.BARREL_CLOSE);
+                CabinetBlockEntity.this.updateBlockState(p_155074_, false);
+            }
+
+            protected void openerCountChanged(Level p_155066_, BlockPos p_155067_, BlockState p_155068_, int p_155069_, int p_155070_) {
+            }
+
+            public boolean isOwnContainer(Player p_155060_) {
+                if (p_155060_.containerMenu instanceof ChestMenu) {
+                    Container container = ((ChestMenu)p_155060_.containerMenu).getContainer();
+                    return container == CabinetBlockEntity.this;
+                } else {
+                    return false;
+                }
+            }
+        };
     }
 
-    @Override
-    public void saveAdditional(CompoundTag compound, HolderLookup.Provider registries) {
-        super.saveAdditional(compound, registries);
-        if (!trySaveLootTable(compound)) {
-            ContainerHelper.saveAllItems(compound, contents, registries);
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        if (!this.trySaveLootTable(output)) {
+            ContainerHelper.saveAllItems(output, this.items);
         }
+
     }
 
-    @Override
-    public void loadAdditional(CompoundTag compound, HolderLookup.Provider registries) {
-        super.loadAdditional(compound, registries);
-        contents = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-        if (!tryLoadLootTable(compound)) {
-            ContainerHelper.loadAllItems(compound, contents, registries);
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+        if (!this.tryLoadLootTable(input)) {
+            ContainerHelper.loadAllItems(input, this.items);
         }
+
     }
 
-    @Override
     public int getContainerSize() {
         return 27;
     }
 
-    @Override
     protected NonNullList<ItemStack> getItems() {
-        return contents;
+        return this.items;
     }
 
-    @Override
-    protected void setItems(NonNullList<ItemStack> itemsIn) {
-        contents = itemsIn;
+    protected void setItems(NonNullList<ItemStack> items) {
+        this.items = items;
     }
 
-    @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.yakisugi.cabinet");
+        return DEFAULT_NAME;
     }
 
-    @Override
     protected AbstractContainerMenu createMenu(int id, Inventory player) {
         return ChestMenu.threeRows(id, player, this);
     }
 
-    public void startOpen(Player pPlayer) {
-        if (level != null && !this.remove && !pPlayer.isSpectator()) {
-            this.openersCounter.incrementOpeners(pPlayer, level, this.getBlockPos(), this.getBlockState());
+    public void startOpen(ContainerUser user) {
+        if (!this.remove && !user.getLivingEntity().isSpectator()) {
+            this.openersCounter.incrementOpeners(user.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState(), user.getContainerInteractionRange());
         }
+
     }
 
-    public void stopOpen(Player pPlayer) {
-        if (level != null && !this.remove && !pPlayer.isSpectator()) {
-            this.openersCounter.decrementOpeners(pPlayer, level, this.getBlockPos(), this.getBlockState());
+    public void stopOpen(ContainerUser user) {
+        if (!this.remove && !user.getLivingEntity().isSpectator()) {
+            this.openersCounter.decrementOpeners(user.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState());
         }
+
+    }
+
+    public List<ContainerUser> getEntitiesWithContainerOpen() {
+        return this.openersCounter.getEntitiesWithContainerOpen(this.getLevel(), this.getBlockPos());
     }
 
     public void recheckOpen() {
-        if (level != null && !this.remove) {
-            this.openersCounter.recheckOpeners(level, this.getBlockPos(), this.getBlockState());
+        if (!this.remove) {
+            this.openersCounter.recheckOpeners(this.getLevel(), this.getBlockPos(), this.getBlockState());
         }
+
     }
 
-    void updateBlockState(BlockState state, boolean open) {
-        if (level != null) {
-            this.level.setBlock(this.getBlockPos(), state.setValue(CabinetBlock.OPEN, open), 3);
-        }
+    private void updateBlockState(BlockState state, boolean isOpen) {
+        this.level.setBlock(this.getBlockPos(), (BlockState)state.setValue(CabinetBlock.OPEN, isOpen), 3);
     }
 
-    private void playSound(BlockState state, SoundEvent sound) {
-        if (level == null) return;
-
-        Vec3i cabinetFacingVector = state.getValue(CabinetBlock.FACING).getNormal();
-        double x = (double) worldPosition.getX() + 0.5D + (double) cabinetFacingVector.getX() / 2.0D;
-        double y = (double) worldPosition.getY() + 0.5D + (double) cabinetFacingVector.getY() / 2.0D;
-        double z = (double) worldPosition.getZ() + 0.5D + (double) cabinetFacingVector.getZ() / 2.0D;
-        level.playSound(null, x, y, z, sound, SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+    private void playSound(BlockState state, SoundEvent event) {
+        Vec3i direction = ((Direction)state.getValue(CabinetBlock.FACING)).getUnitVec3i();
+        double x = (double)this.worldPosition.getX() + (double)0.5F + (double)direction.getX() / (double)2.0F;
+        double y = (double)this.worldPosition.getY() + (double)0.5F + (double)direction.getY() / (double)2.0F;
+        double z = (double)this.worldPosition.getZ() + (double)0.5F + (double)direction.getZ() / (double)2.0F;
+        this.level.playSound((Entity)null, x, y, z, event, SoundSource.BLOCKS, 0.5F, this.level.getRandom().nextFloat() * 0.1F + 0.9F);
     }
 }

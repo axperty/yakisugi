@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "yakisugi:wheat_straw",
-    "farmersdelight:straw"
+    "yakisugi:wheat_straw"
   ]
 }

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "yakisugi:slightly_charred_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "yakisugi:slightly_charred_planks"
   },
   "pattern": [
     "W#W",

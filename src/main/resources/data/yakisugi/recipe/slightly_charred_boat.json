@@ -3,9 +3,7 @@
   "category": "transportation",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "yakisugi:slightly_charred_planks"
-    }
+    "#": "yakisugi:slightly_charred_planks"
   },
   "pattern": [
     "# #",

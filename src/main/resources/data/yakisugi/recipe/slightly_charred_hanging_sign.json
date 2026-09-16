@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
-      "item": "minecraft:chain"
-    },
-    "P": {
-      "item": "yakisugi:slightly_charred_planks"
-    }
+    "C": "minecraft:iron_chain",
+    "P": "yakisugi:slightly_charred_planks"
   },
   "pattern": [
     "C C",

@@ -6,7 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -50,11 +50,11 @@ public class TsukubaiBlock extends Block {
 
     // Allow using with a water bucket
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         boolean filled = state.getValue(WATER);
 
         if (!filled && stack.is(Items.WATER_BUCKET)) {
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 level.setBlock(pos, state.setValue(WATER, true), 3);
                 level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (!player.isCreative()) {
@@ -62,9 +62,9 @@ public class TsukubaiBlock extends Block {
                     Block.popResource(level, pos, new ItemStack(Items.BUCKET));
                 }
             }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return level.isClientSide() ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
         } else if (filled && stack.is(Items.BUCKET)) {
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 level.setBlock(pos, state.setValue(WATER, false), 3);
                 level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (!player.isCreative()) {
@@ -72,14 +72,15 @@ public class TsukubaiBlock extends Block {
                     Block.popResource(level, pos, new ItemStack(Items.WATER_BUCKET));
                 }
             }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return level.isClientSide() ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
         }
 
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     // Droplets Particles and Sounds
-    // The sound of this doesn't really work, need to check why, but droplets work!
+    // The sound of this doesn't really work, need to check why
+    // but droplets work!
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (!state.getValue(WATER)) {

@@ -8,8 +8,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -24,11 +25,11 @@ public class ShurikenEntity extends ThrowableItemProjectile {
     }
 
     public ShurikenEntity(Level level, LivingEntity shooter) {
-        super(EntityTypesRegistry.SHURIKEN.get(), shooter, level);
+        super(EntityTypesRegistry.SHURIKEN.get(), shooter, level, new ItemStack(ItemRegistry.SHURIKEN.get()));
     }
 
     public ShurikenEntity(Level level, double x, double y, double z) {
-        super(EntityTypesRegistry.SHURIKEN.get(), x, y, z, level);
+        super(EntityTypesRegistry.SHURIKEN.get(), x, y, z, level, new ItemStack(ItemRegistry.SHURIKEN.get()));
     }
 
     @Override
@@ -46,9 +47,9 @@ public class ShurikenEntity extends ThrowableItemProjectile {
             return;
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
             living.hurt(this.level().damageSources().thrown(this, this.getOwner()), DAMAGE);
-            living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, DURATION_TICKS, AMPLIFIER));
+            living.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, DURATION_TICKS, AMPLIFIER));
             this.discard();
         }
     }
@@ -60,7 +61,7 @@ public class ShurikenEntity extends ThrowableItemProjectile {
     }
 
     private void dropAsItem() {
-        if (this.level().isClientSide) {
+        if (this.level().isClientSide()) {
             return;
         }
         ItemEntity itemEntity = new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), this.getItem().copy());

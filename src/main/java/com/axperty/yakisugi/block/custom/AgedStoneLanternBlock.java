@@ -9,7 +9,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 
 public class AgedStoneLanternBlock extends Block {
-
     // Custom voxel shape for lantern base
     private static final VoxelShape BASE_SHAPE = Shapes.or(
             Block.box(1.0D, 0.0D, 1.0D, 15.0D, 4.0D, 15.0D),

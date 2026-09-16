@@ -2,16 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-     "W": {
-       "item": "minecraft:bamboo_block"
-     }
+    "W": "minecraft:bamboo_block"
   },
   "pattern": [
-      "WWW",
-      "WWW"
+    "WWW",
+    "WWW"
   ],
   "result": {
-      "count": 6,
-      "id": "yakisugi:bamboo_cladding_wall"
+    "count": 6,
+    "id": "yakisugi:bamboo_cladding_wall"
   }
 }

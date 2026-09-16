@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "minecraft:paper"
-    },
-    "W": {
-      "tag": "minecraft:planks"
-    }
+    "P": "minecraft:paper",
+    "W": "#minecraft:wooden_tool_materials"
   },
   "pattern": [
     "WP",

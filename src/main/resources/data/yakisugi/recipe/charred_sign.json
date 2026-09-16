@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "yakisugi:charred_planks"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "P": "yakisugi:charred_planks",
+    "S": "minecraft:stick"
   },
   "pattern": [
     "PPP",

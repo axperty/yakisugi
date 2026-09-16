@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "yakisugi:block/fancier_log_top",
+    "side": "yakisugi:block/fancier_log"
+  }
+}

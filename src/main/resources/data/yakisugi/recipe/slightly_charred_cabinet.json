@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "S": {
-      "item": "yakisugi:slightly_charred_slab"
-    },
-    "T": {
-      "item": "yakisugi:slightly_charred_trapdoor"
-    }
+    "S": "yakisugi:slightly_charred_slab",
+    "T": "yakisugi:slightly_charred_trapdoor"
   },
   "pattern": [
     "SSS",

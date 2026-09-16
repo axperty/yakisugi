@@ -26,7 +26,7 @@ public class PaperLanternBlock extends LanternBlock {
             Block.box(6.0D, 0.0D, 6.0D, 10.0D, 1.0D, 10.0D),   // Bottom
             Block.box(4.0D, 1.0D, 4.0D, 12.0D, 14.0D, 12.0D),  // Body
             Block.box(6.0D, 14.0D, 6.0D, 10.0D, 15.0D, 10.0D), // Top
-            Block.box(6.5D, 15.0D, 6.5D, 9.5D, 16.0D, 9.5D)    // Hanging chain
+            Block.box(6.5D, 15.0D, 6.5D, 9.5D, 16.0D, 9.5D)    // Hanging rope
     );
 
     public PaperLanternBlock(Properties properties) {

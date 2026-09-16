@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "yakisugi:aged_stone"
-    }
+    "S": "yakisugi:aged_stone"
   },
   "pattern": [
     "SSS",

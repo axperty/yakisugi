@@ -1,26 +1,30 @@
 package com.axperty.yakisugi.block.custom;
 
 import com.axperty.yakisugi.block.entity.CabinetBlockEntity;
-import com.axperty.yakisugi.registry.BlockEntityTypesRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
@@ -31,7 +35,7 @@ public class CabinetBlock extends BaseEntityBlock
 {
     public static final MapCodec<CabinetBlock> CODEC = simpleCodec(CabinetBlock::new);
 
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
 
     public CabinetBlock(Properties properties) {
@@ -44,76 +48,57 @@ public class CabinetBlock extends BaseEntityBlock
         return CODEC;
     }
 
-    @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-        if (!level.isClientSide) {
-            BlockEntity tile = level.getBlockEntity(pos);
-            if (tile instanceof CabinetBlockEntity) {
-                player.openMenu((CabinetBlockEntity) tile);
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (level instanceof ServerLevel serverlevel) {
+            BlockEntity var8 = level.getBlockEntity(pos);
+            if (var8 instanceof CabinetBlockEntity cabinetBlockEntity) {
+                player.openMenu(cabinetBlockEntity);
+                player.awardStat(Stats.OPEN_BARREL);
+                PiglinAi.angerNearbyPiglins(serverlevel, player, true);
             }
         }
+
         return InteractionResult.SUCCESS;
     }
 
-    @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity tileEntity = level.getBlockEntity(pos);
-            if (tileEntity instanceof Container) {
-                Containers.dropContents(level, pos, (Container) tileEntity);
-                level.updateNeighbourForOutputSignal(pos, this);
-            }
-            super.onRemove(state, level, pos, newState, isMoving);
+    protected void affectNeighborsAfterRemoval(BlockState state, ServerLevel level, BlockPos pos, boolean movedByPiston) {
+        Containers.updateNeighboursAfterDestroy(state, level, pos);
+    }
+
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (blockentity instanceof CabinetBlockEntity) {
+            ((CabinetBlockEntity)blockentity).recheckOpen();
         }
-    }
 
-    @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        BlockEntity tileEntity = level.getBlockEntity(pos);
-        if (tileEntity instanceof CabinetBlockEntity) {
-            ((CabinetBlockEntity) tileEntity).recheckOpen();
-        }
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(FACING, OPEN);
-    }
-
-    @Override
-    public boolean hasAnalogOutputSignal(BlockState state) {
-        return true;
-    }
-
-    @Override
-    public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
-        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
     }
 
     @Nullable
-    @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return BlockEntityTypesRegistry.CABINET.get().create(pos, state);
+        return new CabinetBlockEntity(pos, state);
     }
 
-    @Override
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
+    protected boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
     }
 
-    @Override
-    public BlockState rotate(BlockState state, Rotation rot) {
-        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, Direction direction) {
+        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
     }
 
-    @Override
-    public BlockState mirror(BlockState state, Mirror mirrorIn) {
-        return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+    protected BlockState rotate(BlockState state, Rotation rotation) {
+        return (BlockState)state.setValue(FACING, rotation.rotate((Direction)state.getValue(FACING)));
+    }
+
+    protected BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation((Direction)state.getValue(FACING)));
+    }
+
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(new Property[]{FACING, OPEN});
+    }
+
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 }
