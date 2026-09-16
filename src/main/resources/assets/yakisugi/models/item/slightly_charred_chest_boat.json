@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "yakisugi:item/slightly_charred_chest_boat"
+  }
+}

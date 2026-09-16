@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "yakisugi:block/slightly_charred_slab"
+    },
+    "type=double": {
+      "model": "yakisugi:block/slightly_charred_planks"
+    },
+    "type=top": {
+      "model": "yakisugi:block/slightly_charred_slab_top"
+    }
+  }
+}

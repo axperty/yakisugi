@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "minecraft:bamboo"
+    },
+    "L": {
+      "item": "yakisugi:polished_aged_stone_slab"
+    }
+  },
+  "pattern": [
+    "BB ",
+    "L L",
+    "LLL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "yakisugi:polished_aged_stone_tsukubai"
+  }
+}

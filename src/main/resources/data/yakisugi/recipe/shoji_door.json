@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "WP",
+    "WP",
+    "WP"
+  ],
+  "result": {
+    "count": 3,
+    "id": "yakisugi:shoji_door"
+  }
+}

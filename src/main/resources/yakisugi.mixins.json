@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.axperty.yakisugi.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CampfireBlockEntityMixin",
+    "CampfireBlockMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

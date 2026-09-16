@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_sand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "yakisugi:iron_sand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "yakisugi:tamahagane_chunk_from_smelting_iron_sand"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_iron_sand"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "yakisugi:tamahagane_chunk_from_smelting_iron_sand"
+    ]
+  }
+}

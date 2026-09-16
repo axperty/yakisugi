@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "water=false": {
+      "model": "yakisugi:block/aged_stone_tsukubai"
+    },
+    "water=true": {
+      "model": "yakisugi:block/water_aged_stone_tsukubai_full"
+    }
+  }
+}

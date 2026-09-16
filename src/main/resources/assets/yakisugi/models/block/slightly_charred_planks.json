@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "yakisugi:block/slightly_charred_planks"
+  }
+}

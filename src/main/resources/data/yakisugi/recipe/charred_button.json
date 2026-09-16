@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "yakisugi:charred_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "yakisugi:charred_button"
+  }
+}

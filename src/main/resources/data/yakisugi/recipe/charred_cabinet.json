@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "yakisugi:charred_slab"
+    },
+    "T": {
+      "item": "yakisugi:charred_trapdoor"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "T T",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "yakisugi:charred_cabinet"
+  }
+}

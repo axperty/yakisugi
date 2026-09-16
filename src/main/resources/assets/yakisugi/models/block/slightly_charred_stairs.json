@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "yakisugi:block/slightly_charred_planks",
+    "side": "yakisugi:block/slightly_charred_planks",
+    "top": "yakisugi:block/slightly_charred_planks"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "transportation",
+  "group": "boat",
+  "key": {
+    "#": {
+      "item": "yakisugi:charred_planks"
+    }
+  },
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "yakisugi:charred_boat"
+  }
+}

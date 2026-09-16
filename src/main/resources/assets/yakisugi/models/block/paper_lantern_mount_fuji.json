@@ -1,0 +1,7 @@
+{
+  "parent": "yakisugi:block/paper_lantern",
+  "textures": {
+    "2": "yakisugi:block/paper_lamp_mount_fuji",
+    "particle": "yakisugi:block/paper_lamp_mount_fuji"
+  }
+}

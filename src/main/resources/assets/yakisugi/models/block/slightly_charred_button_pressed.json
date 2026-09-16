@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "yakisugi:block/slightly_charred_planks"
+  }
+}

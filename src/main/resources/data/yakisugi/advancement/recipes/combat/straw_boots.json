@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_wheat_straw": {
+      "conditions": {
+        "items": [
+          {
+            "items": "yakisugi:wheat_straw"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "yakisugi:straw_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wheat_straw"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "yakisugi:straw_boots"
+    ]
+  }
+}

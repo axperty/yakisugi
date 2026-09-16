@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "yakisugi:tamahagane_chunk"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "yakisugi:shuriken"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "yakisugi:block/paper_lantern_cherry"
+    },
+    "hanging=true": {
+      "model": "yakisugi:block/paper_lantern_cherry_hanging"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "yakisugi:block/shoji_screen",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "yakisugi:block/shoji_screen"
+    },
+    "facing=south": {
+      "model": "yakisugi:block/shoji_screen",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "yakisugi:block/shoji_screen",
+      "y": 270
+    }
+  }
+}

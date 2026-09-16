@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "yakisugi:block/charred_cabinet_front",
+    "side": "yakisugi:block/charred_cabinet_side",
+    "top": "yakisugi:block/charred_cabinet_top"
+  }
+}

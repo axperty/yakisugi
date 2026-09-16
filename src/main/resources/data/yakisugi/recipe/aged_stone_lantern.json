@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "yakisugi:aged_stone"
+    },
+    "L": {
+      "item": "yakisugi:aged_stone_slab"
+    }
+  },
+  "pattern": [
+    "S",
+    "L"
+  ],
+  "result": {
+    "count": 1,
+    "id": "yakisugi:aged_stone_lantern"
+  }
+}

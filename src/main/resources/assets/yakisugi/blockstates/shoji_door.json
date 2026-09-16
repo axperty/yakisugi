@@ -1,0 +1,184 @@
+{
+  "variants": {
+    "facing=east,half=lower,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom",
+      "y": 90
+    },
+    "facing=east,half=lower,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_1",
+      "y": 90
+    },
+    "facing=east,half=lower,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_2",
+      "y": 90
+    },
+    "facing=east,half=lower,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom",
+      "y": 90
+    },
+    "facing=east,half=lower,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_1",
+      "y": 90
+    },
+    "facing=east,half=lower,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_2",
+      "y": 90
+    },
+    "facing=east,half=upper,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_top",
+      "y": 90
+    },
+    "facing=east,half=upper,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_1",
+      "y": 90
+    },
+    "facing=east,half=upper,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_2",
+      "y": 90
+    },
+    "facing=east,half=upper,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_top",
+      "y": 90
+    },
+    "facing=east,half=upper,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_1",
+      "y": 90
+    },
+    "facing=east,half=upper,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_2",
+      "y": 90
+    },
+    "facing=north,half=lower,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom"
+    },
+    "facing=north,half=lower,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_1"
+    },
+    "facing=north,half=lower,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_2"
+    },
+    "facing=north,half=lower,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom"
+    },
+    "facing=north,half=lower,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_1"
+    },
+    "facing=north,half=lower,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_2"
+    },
+    "facing=north,half=upper,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_top"
+    },
+    "facing=north,half=upper,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_1"
+    },
+    "facing=north,half=upper,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_2"
+    },
+    "facing=north,half=upper,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_top"
+    },
+    "facing=north,half=upper,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_1"
+    },
+    "facing=north,half=upper,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_2"
+    },
+    "facing=south,half=lower,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom",
+      "y": 180
+    },
+    "facing=south,half=lower,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_1",
+      "y": 180
+    },
+    "facing=south,half=lower,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_2",
+      "y": 180
+    },
+    "facing=south,half=lower,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom",
+      "y": 180
+    },
+    "facing=south,half=lower,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_1",
+      "y": 180
+    },
+    "facing=south,half=lower,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_2",
+      "y": 180
+    },
+    "facing=south,half=upper,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_top",
+      "y": 180
+    },
+    "facing=south,half=upper,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_1",
+      "y": 180
+    },
+    "facing=south,half=upper,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_2",
+      "y": 180
+    },
+    "facing=south,half=upper,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_top",
+      "y": 180
+    },
+    "facing=south,half=upper,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_1",
+      "y": 180
+    },
+    "facing=south,half=upper,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_2",
+      "y": 180
+    },
+    "facing=west,half=lower,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom",
+      "y": 270
+    },
+    "facing=west,half=lower,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_1",
+      "y": 270
+    },
+    "facing=west,half=lower,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_left_stage_2",
+      "y": 270
+    },
+    "facing=west,half=lower,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_bottom",
+      "y": 270
+    },
+    "facing=west,half=lower,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_1",
+      "y": 270
+    },
+    "facing=west,half=lower,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_bottom_slided_right_stage_2",
+      "y": 270
+    },
+    "facing=west,half=upper,hinge=left,stage=0": {
+      "model": "yakisugi:block/shoji_door_top",
+      "y": 270
+    },
+    "facing=west,half=upper,hinge=left,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_1",
+      "y": 270
+    },
+    "facing=west,half=upper,hinge=left,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_left_stage_2",
+      "y": 270
+    },
+    "facing=west,half=upper,hinge=right,stage=0": {
+      "model": "yakisugi:block/shoji_door_top",
+      "y": 270
+    },
+    "facing=west,half=upper,hinge=right,stage=1": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_1",
+      "y": 270
+    },
+    "facing=west,half=upper,hinge=right,stage=2": {
+      "model": "yakisugi:block/shoji_door_top_slided_right_stage_2",
+      "y": 270
+    }
+  }
+}

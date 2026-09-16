@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "yakisugi:block/slightly_charred_planks"
+  }
+}

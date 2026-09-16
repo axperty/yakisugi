@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "yakisugi:block/charred_pressure_plate"
+    },
+    "powered=true": {
+      "model": "yakisugi:block/charred_pressure_plate_down"
+    }
+  }
+}
