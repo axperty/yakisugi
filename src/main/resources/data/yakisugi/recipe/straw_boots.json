@@ -6,11 +6,10 @@
   },
   "pattern": [
     "S S",
-    "SSS",
-    "SSS"
+    "S S"
   ],
   "result": {
     "count": 1,
-    "id": "yakisugi:mino"
+    "id": "yakisugi:straw_boots"
   }
 }

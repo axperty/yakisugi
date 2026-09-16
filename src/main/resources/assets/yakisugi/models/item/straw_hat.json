@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "yakisugi:item/wheat_hat"
+    "layer0": "yakisugi:item/straw_hat"
   },
   "display": {
     "head": {

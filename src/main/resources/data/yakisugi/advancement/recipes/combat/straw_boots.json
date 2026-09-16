@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "yakisugi:mino"
+        "recipe": "yakisugi:straw_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "yakisugi:mino"
+      "yakisugi:straw_boots"
     ]
   }
 }

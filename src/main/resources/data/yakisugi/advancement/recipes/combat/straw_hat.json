@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "yakisugi:wheat_hat"
+        "recipe": "yakisugi:straw_hat"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "yakisugi:wheat_hat"
+      "yakisugi:straw_hat"
     ]
   }
 }

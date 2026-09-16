@@ -31,9 +31,9 @@ public class StrawArmorLayer<S extends HumanoidRenderState, M extends HumanoidMo
         ItemStack chestItem = state.chestEquipment;
         ItemStack feetItem = state.feetEquipment;
 
-        boolean showHead = headItem.is(ItemRegistry.WHEAT_HAT.get());
-        boolean showBody = chestItem.is(ItemRegistry.MINO.get());
-        boolean showFeet = feetItem.is(ItemRegistry.FUKA_GUTSU.get());
+        boolean showHead = headItem.is(ItemRegistry.STRAW_HAT.get());
+        boolean showBody = chestItem.is(ItemRegistry.STRAW_MINO.get());
+        boolean showFeet = feetItem.is(ItemRegistry.STRAW_BOOTS.get());
 
         if (!showHead && !showBody && !showFeet) {
             return;

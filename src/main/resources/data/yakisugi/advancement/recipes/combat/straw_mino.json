@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "yakisugi:fuka_gutsu"
+        "recipe": "yakisugi:straw_mino"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "yakisugi:fuka_gutsu"
+      "yakisugi:straw_mino"
     ]
   }
 }

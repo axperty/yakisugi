@@ -33,7 +33,7 @@ public class EventsRegistry {
         Player player = event.getEntity();
 
         // Mino keeps the player from freezing in powder snow
-        if (player.getItemBySlot(EquipmentSlot.CHEST).is(ItemRegistry.MINO.get())) {
+        if (player.getItemBySlot(EquipmentSlot.CHEST).is(ItemRegistry.STRAW_MINO.get())) {
             player.setTicksFrozen(0);
         }
 
@@ -41,7 +41,7 @@ public class EventsRegistry {
         AttributeInstance speedAttribute = player.getAttribute(Attributes.MOVEMENT_SPEED);
         if (speedAttribute != null) {
             BlockState below = player.getBlockStateOn();
-            boolean shouldCancelSlow = player.getItemBySlot(EquipmentSlot.FEET).is(ItemRegistry.FUKA_GUTSU.get())
+            boolean shouldCancelSlow = player.getItemBySlot(EquipmentSlot.FEET).is(ItemRegistry.STRAW_BOOTS.get())
                     && (below.is(BlockTags.SOUL_SPEED_BLOCKS) || below.is(BlockTags.SNOW));
             boolean hasModifier = speedAttribute.hasModifier(FUKA_GUTSU_NO_SLOW_ID);
 
@@ -64,7 +64,7 @@ public class EventsRegistry {
 
         if (block instanceof CropBlock cropBlock && cropBlock.isMaxAge(state)) {
             ItemStack headSlot = player.getItemBySlot(EquipmentSlot.HEAD);
-            if (headSlot.is(ItemRegistry.WHEAT_HAT.get())) {
+            if (headSlot.is(ItemRegistry.STRAW_HAT.get())) {
                 if (Math.random() < 0.5) {
                     LevelAccessor levelAccessor = event.getLevel();
                     if (levelAccessor instanceof Level level && !level.isClientSide()) {

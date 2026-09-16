@@ -2,8 +2,8 @@ package com.axperty.yakisugi.item.custom;
 
 import net.minecraft.world.item.Item;
 
-public class FukaGutsuItem extends Item {
-    public FukaGutsuItem(Properties properties) {
+public class StrawMinoItem extends Item {
+    public StrawMinoItem(Properties properties) {
         super(properties);
     }
 }

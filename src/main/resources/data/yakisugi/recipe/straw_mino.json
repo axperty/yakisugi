@@ -5,11 +5,12 @@
     "S": "yakisugi:wheat_straw"
   },
   "pattern": [
+    "S S",
     "SSS",
-    "S S"
+    "SSS"
   ],
   "result": {
     "count": 1,
-    "id": "yakisugi:wheat_hat"
+    "id": "yakisugi:straw_mino"
   }
 }

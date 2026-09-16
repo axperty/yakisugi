@@ -6,11 +6,11 @@ import com.axperty.yakisugi.entity.CharredChestBoatEntity;
 import com.axperty.yakisugi.entity.SlightlyCharredBoatEntity;
 import com.axperty.yakisugi.entity.SlightlyCharredChestBoatEntity;
 import com.axperty.yakisugi.item.BoatItem;
-import com.axperty.yakisugi.item.custom.FukaGutsuItem;
+import com.axperty.yakisugi.item.custom.StrawBootsItem;
 import com.axperty.yakisugi.item.custom.KatanaItem;
-import com.axperty.yakisugi.item.custom.MinoItem;
+import com.axperty.yakisugi.item.custom.StrawMinoItem;
 import com.axperty.yakisugi.item.custom.ShurikenItem;
-import com.axperty.yakisugi.item.custom.WheatHatItem;
+import com.axperty.yakisugi.item.custom.StrawHatItem;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -81,12 +81,12 @@ public class ItemRegistry {
 
     public static final DeferredItem<Item> WHEAT_STRAW = ITEMS.registerSimpleItem("wheat_straw");
 
-    public static final DeferredItem<Item> WHEAT_HAT = ITEMS.registerItem("wheat_hat",
-            WheatHatItem::new, () -> new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, equippableWithAsset(EquipmentSlot.HEAD, "wheat_hat")));
+    public static final DeferredItem<Item> STRAW_HAT = ITEMS.registerItem("straw_hat",
+            StrawHatItem::new, () -> new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, equippableWithAsset(EquipmentSlot.HEAD, "straw_hat")));
 
-    public static final DeferredItem<Item> MINO = ITEMS.registerItem("mino",
-            MinoItem::new, () -> new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, equippableWithAsset(EquipmentSlot.CHEST, "mino")));
+    public static final DeferredItem<Item> STRAW_MINO = ITEMS.registerItem("straw_mino",
+            StrawMinoItem::new, () -> new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, equippableWithAsset(EquipmentSlot.CHEST, "straw_mino")));
 
-    public static final DeferredItem<Item> FUKA_GUTSU = ITEMS.registerItem("fuka_gutsu",
-            FukaGutsuItem::new, () -> new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, equippableWithAsset(EquipmentSlot.FEET, "fuka_gutsu")));
+    public static final DeferredItem<Item> STRAW_BOOTS = ITEMS.registerItem("straw_boots",
+            StrawBootsItem::new, () -> new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, equippableWithAsset(EquipmentSlot.FEET, "straw_boots")));
 }
