@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "yakisugi:wheat_straw"
+    "yakisugi:wheat_straw",
+    {
+      "id": "farmersdelight:straw",
+      "required": false
+    }
   ]
 }
