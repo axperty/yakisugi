@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.item.DyeColor;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class FloorBedBlock extends BedBlock {
     // Bed shape needs fix
@@ -35,7 +35,7 @@ public class FloorBedBlock extends BedBlock {
         return SHAPE;
     }
 
-    // No block entity needed: color/appearance come entirely from our block model, not BedBlockEntity + BedRenderer.
+    // No block entity needed here
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

@@ -104,8 +104,8 @@ public abstract class CampfireBlockEntityMixin extends BlockEntity implements IC
         int time = map.getInt(targetPos);
         time += 20;
         
-        boolean isSlightlyCharred = targetState.is(BlockRegistry.SLIGHTLY_CHARRED_PLANKS.get());
-        boolean isCharred = targetState.is(BlockRegistry.CHARRED_PLANKS.get());
+        boolean isSlightlyCharred = targetState.is(BlockRegistry.SLIGHTLY_CHARRED_PLANKS);
+        boolean isCharred = targetState.is(BlockRegistry.CHARRED_PLANKS);
         
         if (isCharred) {
             if (time >= CHARCOAL_THRESHOLD) {
@@ -118,10 +118,10 @@ public abstract class CampfireBlockEntityMixin extends BlockEntity implements IC
             }
         } else if (time >= CHARRED_THRESHOLD) {
             if (!isSlightlyCharred) {
-                level.setBlockAndUpdate(targetPos, BlockRegistry.SLIGHTLY_CHARRED_PLANKS.get().defaultBlockState());
+                level.setBlockAndUpdate(targetPos, BlockRegistry.SLIGHTLY_CHARRED_PLANKS.defaultBlockState());
                 map.put(targetPos, 0);
             } else {
-                level.setBlockAndUpdate(targetPos, BlockRegistry.CHARRED_PLANKS.get().defaultBlockState());
+                level.setBlockAndUpdate(targetPos, BlockRegistry.CHARRED_PLANKS.defaultBlockState());
                 map.put(targetPos, 0);
             }
             level.levelEvent(1502, targetPos, 0);

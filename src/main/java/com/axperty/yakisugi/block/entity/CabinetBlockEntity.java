@@ -53,7 +53,7 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity
     };
 
     public CabinetBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityTypesRegistry.CABINET.get(), pos, state);
+        super(BlockEntityTypesRegistry.CABINET, pos, state);
     }
 
     @Override

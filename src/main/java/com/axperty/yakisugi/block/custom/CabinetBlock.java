@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 // Taken from Storage Delight which also takes it from the Barrel block
 @SuppressWarnings("deprecation")
@@ -99,7 +99,7 @@ public class CabinetBlock extends BaseEntityBlock
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return BlockEntityTypesRegistry.CABINET.get().create(pos, state);
+        return BlockEntityTypesRegistry.CABINET.create(pos, state);
     }
 
     @Override

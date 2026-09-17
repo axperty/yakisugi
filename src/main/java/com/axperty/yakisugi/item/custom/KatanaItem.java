@@ -40,7 +40,7 @@ public class KatanaItem extends SwordItem {
 
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return repair.is(ItemRegistry.TAMAHAGANE_CHUNK.get()) || super.isValidRepairItem(toRepair, repair);
+        return repair.is(ItemRegistry.TAMAHAGANE_CHUNK) || super.isValidRepairItem(toRepair, repair);
     }
 
     private boolean isCriticalHit(ServerPlayer player) {

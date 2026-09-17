@@ -24,16 +24,16 @@ public class ShurikenEntity extends ThrowableItemProjectile {
     }
 
     public ShurikenEntity(Level level, LivingEntity shooter) {
-        super(EntityTypesRegistry.SHURIKEN.get(), shooter, level);
+        super(EntityTypesRegistry.SHURIKEN, shooter, level);
     }
 
     public ShurikenEntity(Level level, double x, double y, double z) {
-        super(EntityTypesRegistry.SHURIKEN.get(), x, y, z, level);
+        super(EntityTypesRegistry.SHURIKEN, x, y, z, level);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return ItemRegistry.SHURIKEN.get();
+        return ItemRegistry.SHURIKEN;
     }
 
     @Override

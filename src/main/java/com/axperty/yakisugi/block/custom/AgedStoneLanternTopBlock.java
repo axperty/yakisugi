@@ -59,7 +59,7 @@ public class AgedStoneLanternTopBlock extends Block {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState below = level.getBlockState(pos.below());
-        return below.is(BlockRegistry.AGED_STONE_LANTERN.get()) || below.is(BlockRegistry.POLISHED_AGED_STONE_LANTERN.get());
+        return below.is(BlockRegistry.AGED_STONE_LANTERN) || below.is(BlockRegistry.POLISHED_AGED_STONE_LANTERN);
     }
 
     @Override

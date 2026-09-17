@@ -13,12 +13,12 @@ public class CharredChestBoatEntity extends ChestBoat {
     }
 
     public CharredChestBoatEntity(Level level, double x, double y, double z) {
-        this(EntityTypesRegistry.CHARRED_CHEST_BOAT.get(), level);
+        this(EntityTypesRegistry.CHARRED_CHEST_BOAT, level);
         this.setPos(x, y, z);
     }
 
     @Override
     public Item getDropItem() {
-        return ItemRegistry.CHARRED_CHEST_BOAT.get();
+        return ItemRegistry.CHARRED_CHEST_BOAT;
     }
 }

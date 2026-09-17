@@ -35,9 +35,9 @@ public class StrawArmorLayer<T extends LivingEntity, M extends HumanoidModel<T>>
         ItemStack chestItem = entity.getItemBySlot(EquipmentSlot.CHEST);
         ItemStack feetItem = entity.getItemBySlot(EquipmentSlot.FEET);
 
-        boolean showHead = headItem.is(ItemRegistry.STRAW_HAT.get());
-        boolean showBody = chestItem.is(ItemRegistry.STRAW_MINO.get());
-        boolean showFeet = feetItem.is(ItemRegistry.STRAW_BOOTS.get());
+        boolean showHead = headItem.is(ItemRegistry.STRAW_HAT);
+        boolean showBody = chestItem.is(ItemRegistry.STRAW_MINO);
+        boolean showFeet = feetItem.is(ItemRegistry.STRAW_BOOTS);
 
         if (!showHead && !showBody && !showFeet) {
             return;
