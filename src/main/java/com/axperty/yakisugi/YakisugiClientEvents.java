@@ -15,6 +15,7 @@ import com.axperty.yakisugi.registry.ItemRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -24,6 +25,7 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
@@ -40,6 +42,12 @@ public class YakisugiClientEvents implements ClientModInitializer {
         addLayers();
         registerAdditionalModels();
         registerBuiltinItemRenderer();
+        registerBlockRenderLayers();
+    }
+
+    // Shoji bone transparency fix
+    private void registerBlockRenderLayers() {
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.SHOJI_BONE, RenderType.cutout());
     }
 
     private void registerBlockColors() {
