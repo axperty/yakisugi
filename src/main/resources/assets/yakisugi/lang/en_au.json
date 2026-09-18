@@ -74,12 +74,7 @@
   "item.yakisugi.slightly_charred_boat": "Slightly Charred Boat",
   "item.yakisugi.slightly_charred_chest_boat": "Slightly Charred Boat with Chest",
 
-  "block.yakisugi.slightly_charred_log": "Slightly Charred Log",
-  "block.yakisugi.slightly_charred_wood": "Slightly Charred Wood",
-  "block.yakisugi.stripped_slightly_charred_log": "Stripped Slightly Charred Log",
-  "block.yakisugi.stripped_slightly_charred_wood": "Stripped Slightly Charred Wood",
-
-  "block.yakisugi.floor_bed": "Floor Bed",
+  "block.yakisugi.futon": "Futon",
 
   "itemGroup.yakisugi": "Yakisugi"
 }

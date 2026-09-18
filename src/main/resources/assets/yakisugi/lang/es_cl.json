@@ -1,0 +1,85 @@
+{
+  "container.yakisugi.cabinet": "Alacena",
+  "item.yakisugi.katana": "Katana",
+  "item.yakisugi.shuriken": "Shuriken",
+  "item.yakisugi.iron_sand": "Arena de hierro",
+  "item.yakisugi.tamahagane_chunk": "Tamahagane",
+
+  "item.yakisugi.wheat_straw": "Caña de trigo",
+  "item.yakisugi.straw_hat": "Sombrero de caña de trigo",
+  "item.yakisugi.straw_mino": "Mino de caña de trigo",
+  "item.yakisugi.straw_boots": "Botas de caña de trigo",
+
+  "block.yakisugi.shoji_screen": "Pared Shoji",
+  "block.yakisugi.shoji_door": "Puerta Shoji",
+  "block.yakisugi.shoji_bone": "Armazón Shoji",
+
+  "block.yakisugi.bamboo_cladding_wall": "Revestimiento de bambú",
+  "block.yakisugi.stripped_bamboo_cladding_wall": "Revestimiento de bambú sin corteza",
+
+  "block.yakisugi.tatami_block": "Bloque de Tatami",
+  "block.yakisugi.tatami_mat": "Tatami",
+
+  "block.yakisugi.paper_lantern": "Linterna de papel",
+  "block.yakisugi.paper_lantern_cherry": "Linterna de papel cerezo",
+  "block.yakisugi.paper_lantern_mount_fuji": "Linterna de papel monte Fuji",
+
+  "block.yakisugi.aged_stone": "Piedra envejecida",
+  "block.yakisugi.aged_stone_stairs": "Escaleras de piedra envejecida",
+  "block.yakisugi.aged_stone_slab": "Baldosa de piedra envejecida",
+  "block.yakisugi.aged_stone_wall": "Pared de piedra envejecida",
+  "block.yakisugi.aged_stone_pressure_plate": "Placa de presión de piedra envejecida",
+  "block.yakisugi.aged_stone_button": "Botón de piedra envejecida",
+  "block.yakisugi.aged_stone_lantern": "Pie de linterna de piedra envejecida",
+  "block.yakisugi.aged_stone_lantern_top": "Remate de linterna de piedra envejecida",
+  "block.yakisugi.aged_stone_tsukubai": "Tsukubai de piedra envejecida",
+
+  "block.yakisugi.polished_aged_stone": "Piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_stairs": "Escaleras de piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_slab": "Baldosa de piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_wall": "Pared de piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_pressure_plate": "Placa de presión de piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_button": "Botón de piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_lantern": "Pie de linterna de piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_lantern_top": "Remate de linterna de piedra envejecida pulida",
+  "block.yakisugi.polished_aged_stone_tsukubai": "Tsukubai de piedra envejecida pulida",
+
+  "block.yakisugi.slightly_charred_planks": "Madera poco chamuscada",
+  "block.yakisugi.slightly_charred_cabinet": "Alacena poco chamuscada",
+  "block.yakisugi.slightly_charred_stairs": "Escaleras poco chamuscadas",
+  "block.yakisugi.slightly_charred_slab": "Baldosa poco chamuscada",
+  "block.yakisugi.slightly_charred_fence": "Valla poco chamuscada",
+  "block.yakisugi.slightly_charred_fence_gate": "Puerta de valla poco chamuscada",
+  "block.yakisugi.slightly_charred_pressure_plate": "Placa de presión poco chamuscada",
+  "block.yakisugi.slightly_charred_button": "Botón poco chamuscado",
+  "block.yakisugi.slightly_charred_trapdoor": "Escotilla poco chamuscada",
+
+  "block.yakisugi.charred_planks": "Madera chamuscada",
+  "block.yakisugi.charred_cabinet": "Alacena chamuscada",
+  "block.yakisugi.charred_stairs": "Escaleras chamuscadas",
+  "block.yakisugi.charred_slab": "Baldosa chamuscada",
+  "block.yakisugi.charred_fence": "Valla chamuscada",
+  "block.yakisugi.charred_fence_gate": "Puerta de valla chamuscada",
+  "block.yakisugi.charred_pressure_plate": "Placa de presión chamuscada",
+  "block.yakisugi.charred_button": "Botón chamuscado",
+  "block.yakisugi.charred_trapdoor": "Escotilla chamuscada",
+  "block.yakisugi.charred_sign": "Cartel chamuscado",
+
+  "block.yakisugi.charred_hanging_sign": "Cartel colgante chamuscado",
+  "block.yakisugi.slightly_charred_sign": "Cartel poco chamuscado",
+  "block.yakisugi.slightly_charred_hanging_sign": "Cartel colgante poco chamuscado",
+
+  "item.yakisugi.charred_boat": "Bote chamuscado",
+  "item.yakisugi.charred_chest_boat": "Bote chamuscado con cofre",
+  "item.yakisugi.slightly_charred_boat": "Bote poco chamuscado",
+  "item.yakisugi.slightly_charred_chest_boat": "Bote poco chamuscado con cofre",
+
+  "block.yakisugi.slightly_charred_log": "Tronco poco chamuscado",
+  "block.yakisugi.slightly_charred_wood": "Leño poco chamuscada",
+  "block.yakisugi.stripped_slightly_charred_log": "Tronco sin corteza poco chamuscado",
+  "block.yakisugi.stripped_slightly_charred_wood": "Leño sin corteza poco chamuscado",
+
+  "block.yakisugi.futon": "Futón",
+
+  "itemGroup.yakisugi": "Yakisugi"
+}
