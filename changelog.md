@@ -2,10 +2,13 @@
 
 ***
 
-### ✨ What's New:
+### 🛠️ Bug Fixes:
 
-- Small translation changes.
+- Fixed a bug where charred wood couldn't be made using a campfire when Lithium was installed.
 
+### 🌐 Translations:
+
+- Added translations for Spanish (thanks, Ateneah!)
 ***
 
 ### 📝 Feedback and Support:
