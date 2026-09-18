@@ -78,8 +78,7 @@ configurations {
 }
 
 dependencies {
-    implementation "curse.maven:jei-238222:8829744"
-    implementation "curse.maven:farmers-delight-398521:8765184"
+
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
