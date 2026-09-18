@@ -3,6 +3,13 @@ plugins {
     id 'maven-publish'
 }
 
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
 repositories {
 
 }
@@ -14,18 +21,20 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
+def expandProps = [
+        "mod_version": project.mod_version,
+        "mod_id": project.mod_id,
+        "mod_name": project.mod_name,
+        "mod_description": project.mod_description,
+        "mod_authors": project.mod_authors,
+        "mod_license": project.mod_license
+]
+
 processResources {
-    def props = [
-            "mod_version"     : project.mod_version,
-            "mod_id"          : project.mod_id,
-            "mod_name"        : project.mod_name,
-            "mod_description" : project.mod_description,
-            "mod_authors"     : project.mod_authors
-    ]
-    inputs.properties props
+    inputs.properties(expandProps)
 
     filesMatching("fabric.mod.json") {
-        expand props
+        expand(expandProps)
     }
 }
 
@@ -39,17 +48,15 @@ java {
 }
 
 jar {
-    def projectName = project.name
-    inputs.property "projectName", projectName
-
     from("LICENSE") {
-        rename { "${it}_$projectName"}
+        rename { "${it}_${project.base.archivesName.get()}"}
     }
 }
 
 publishing {
     publications {
         create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
             from components.java
         }
     }
