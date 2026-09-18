@@ -8,7 +8,7 @@
 
 ### 🌐 Translations:
 
-- Added translations for Spanish (thanks, Ateneah!)
+- Added translations for Spanish (thanks, Silvia Sanchez Bernardi!)
 ***
 
 ### 📝 Feedback and Support:
