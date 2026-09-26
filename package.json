@@ -1,0 +1,34 @@
+{
+  "name": "yakisugi",
+  "version": "26.09.25",
+  "description": "Yakisugi is a Minecraft mod inspired by traditional Japanese culture, adding charred wood, katanas, shurikens, straw armor, and decorations like shoji screens and stone lanterns.",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axperty/yakisugi.git"
+  },
+  "keywords": [
+    "fabric",
+    "neoforge",
+    "java",
+    "minecraft",
+    "mod"
+  ],
+  "author": "Axperty",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/axperty/yakisugi/issues"
+  },
+  "homepage": "https://github.com/axperty/yakisugi#readme",
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-tabs": "^0.9.1",
+    "vue": "^3.5.41"
+  }
+}
