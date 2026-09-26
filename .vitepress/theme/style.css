@@ -52,37 +52,21 @@
   --vp-button-brand-active-bg: #4d2612;
 }
 
-/* Hero Logo */
-.VPHero .name.clip {
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 420 / 150;
-  height: auto;
-  margin: 0 auto;
-  background-image: url('/assets/yakisugi_icon_full.png') !important;
-  -webkit-background-clip: border-box !important;
-  background-clip: border-box !important;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  color: transparent;
-  -webkit-text-fill-color: transparent !important;
+/* Hero Image Glow */
+:root {
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--vp-c-brand-1) 30%, var(--vp-c-brand-3));
+  --vp-home-hero-image-filter: blur(44px);
 }
 
-/* Desktop Fix */
-@media (min-width: 960px) {
-  .VPHero .name.clip {
-    margin: 0;
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
   }
 }
 
-/* Hero Image Properties */
-.VPHero .image-src {
-  transform: translate(-50%, -50%) scale(2) !important;
-  object-fit: cover !important;
-  aspect-ratio: 1 / 1 !important;
-  border-radius: 50% !important;
-  -webkit-mask-image: radial-gradient(circle, black 0%, transparent 70%) !important;
-  mask-image: radial-gradient(circle, black 0%, transparent 70%) !important;
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
 }
+
