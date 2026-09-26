@@ -1,0 +1,88 @@
+/* Theme Colors */
+:root {
+  --vp-c-brand-1: #fbbf24;
+  --vp-c-brand-2: #f59e0b;
+  --vp-c-brand-3: #d97706;
+  --vp-c-brand-soft: rgba(251, 191, 36, 0.16);
+
+  --vp-button-brand-text: #1b1b1f;
+  --vp-button-brand-hover-text: #1b1b1f;
+  --vp-button-brand-active-text: #1b1b1f;
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-hover-bg: #f59e0b;
+  --vp-button-brand-active-bg: #d97706;
+
+  --vp-home-hero-name-color: var(--vp-c-brand-1);
+}
+
+:root:not(.dark) {
+  --vp-c-bg: #fbe3b5;
+  --vp-c-bg-alt: #f7d89f;
+  --vp-c-bg-elv: #fdedcf;
+  --vp-c-bg-soft: #f7d89f;
+
+  --vp-c-brand-1: #643117;
+  --vp-c-brand-2: #502713;
+  --vp-c-brand-3: #3a1c0d;
+  --vp-c-brand-soft: rgba(100, 49, 23, 0.16);
+
+  --vp-c-text-1: #3a1c0d;
+  --vp-c-text-2: rgba(100, 49, 23, 0.7);
+  --vp-c-text-3: rgba(100, 49, 23, 0.45);
+
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-bg: #643117;
+  --vp-button-brand-hover-bg: #502713;
+  --vp-button-brand-active-bg: #3a1c0d;
+}
+
+.dark {
+  --vp-c-brand-1: #d9713f;
+  --vp-c-brand-2: #c25f30;
+  --vp-c-brand-3: #a84f26;
+  --vp-c-brand-soft: rgba(217, 113, 63, 0.16);
+
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-bg: #643117;
+  --vp-button-brand-hover-bg: #7a3d1d;
+  --vp-button-brand-active-bg: #4d2612;
+}
+
+/* Hero Logo */
+.VPHero .name.clip {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 420 / 150;
+  height: auto;
+  margin: 0 auto;
+  background-image: url('/assets/yakisugi_icon_full.png') !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  color: transparent;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Desktop Fix */
+@media (min-width: 960px) {
+  .VPHero .name.clip {
+    margin: 0;
+  }
+}
+
+/* Hero Image Properties */
+.VPHero .image-src {
+  transform: translate(-50%, -50%) scale(2) !important;
+  object-fit: cover !important;
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 50% !important;
+  -webkit-mask-image: radial-gradient(circle, black 0%, transparent 70%) !important;
+  mask-image: radial-gradient(circle, black 0%, transparent 70%) !important;
+}
