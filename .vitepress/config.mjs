@@ -183,7 +183,7 @@ export default defineConfig({
       { icon: 'youtube', link: 'https://www.youtube.com/@axperty' }
     ],
     footer: {
-      message: '<a href="/privacy">Privacy Policy</a><br/> Yakisugi is licensed under the <a href="https://github.com/axperty/yakisugi/blob/26.1-neoforge/LICENSE.md" target="_blank" rel="noopener">Yakisugi Mod License</a>.<br/> Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.<br/> All other trademarks and logos are property of their respective owners.',
+      message: '<a href="/yakisugi/privacy">Privacy Policy</a><br/> Yakisugi is licensed under the <a href="https://github.com/axperty/yakisugi/blob/26.1-neoforge/LICENSE.md" target="_blank" rel="noopener">Yakisugi Mod License</a>.<br/> Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.<br/> All other trademarks and logos are property of their respective owners.',
       copyright: 'Copyright © 2026 Axperty. Website source code is under the MIT License.'
     }
   }
